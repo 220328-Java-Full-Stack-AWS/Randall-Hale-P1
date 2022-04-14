@@ -1,9 +1,7 @@
 package com.revature;
 
-import com.revature.db.UserDao;
 import com.revature.models.User;
-import com.revature.models.Role;
-import com.revature.services.UserService;
+import com.revature.services.AuthService;
 
 import java.util.Scanner;
 
@@ -14,35 +12,39 @@ public class Driver {
         Scanner scan = new Scanner(System.in);
 
         Boolean loggedIn = false;
+        User currUser = null;
 
         while(!loggedIn){
 
             System.out.println("Welcome. Do you want to login (enter 1) or register (enter 2)?");
-            int response = scan.nextInt();
+            int response = Integer.parseInt(scan.nextLine());
             if(response == 1){
 
-                loggedIn = true;
+                System.out.println("What is your username?");
+                String username = scan.nextLine();
+                System.out.println("Enter your password.");
+                String password = scan.nextLine();
+
+                currUser = AuthService.login(username,password);
+
+                if(currUser != null) {
+                    loggedIn = true;
+                    System.out.println("Congrats. You've made it.");
+                    continue;
+                }
+
             }
             else if(response == 2) {
-                System.out.println("What will your username be?");
+                System.out.println("Provide username");
                 String username = scan.nextLine();
-                System.out.println("What bout your password?");
+                System.out.println("Provide password");
                 String password = scan.nextLine();
                 System.out.println("What's your email?");
                 String email = scan.nextLine();
-                System.out.println("Are you an employee (enter 1) or the one in charge (enter 2)?");
-                response = scan.nextInt();
-                if(response == 1) {
-                    UserService.register(username,password,email,Role.valueOf("EMPLOYEE"));
-                }
-                else if(response == 2){
-                    UserService.register(username,password,email,Role.valueOf("FINANCE_MANAGER"));
-                }
+
+                AuthService.register(username,password,email);
             }
-
-
         }
-
-
+        System.out.println("Wow. you really made it out of there chap. Outstanding");
         }
     }

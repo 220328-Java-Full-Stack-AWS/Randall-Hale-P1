@@ -24,18 +24,16 @@ public class AbstractUser {
     private int id;
     private String username;
     private String password;
-    private Role role;
+    private Role role = Role.valueOf("EMPLOYEE");
 
     public AbstractUser() {
         super();
     }
 
-    public AbstractUser(int id, String username, String password, Role role) {
+    public AbstractUser(String username, String password) {
         super();
-        this.id = id;
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
     public int getId() {
