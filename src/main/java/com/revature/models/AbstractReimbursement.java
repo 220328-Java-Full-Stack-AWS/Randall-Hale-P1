@@ -22,16 +22,16 @@ import java.util.Objects;
 public class AbstractReimbursement {
 
     private int id;
-    private Status status;
-    private User author;
-    private User resolver;
+    private int status;
+    private int author;
+    private int resolver;
     private double amount;
 
     public AbstractReimbursement() {
         super();
     }
 
-    public AbstractReimbursement(int id, Status status, User author, User resolver, double amount) {
+    public AbstractReimbursement(int id, int status, int author, double amount) {
         super();
         this.id = id;
         this.status = status;
@@ -48,27 +48,27 @@ public class AbstractReimbursement {
         this.id = id;
     }
 
-    public Status getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public User getAuthor() {
+    public int getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(int author) {
         this.author = author;
     }
 
-    public User getResolver() {
+    public int getResolver() {
         return resolver;
     }
 
-    public void setResolver(User resolver) {
+    public void setResolver(int resolver) {
         this.resolver = resolver;
     }
 

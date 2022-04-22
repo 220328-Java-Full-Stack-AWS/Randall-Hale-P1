@@ -15,15 +15,25 @@ package com.revature.models;
  */
 public class Reimbursement extends AbstractReimbursement {
 
+
+    private String description;
+
     public Reimbursement() {
         super();
     }
 
-    /**
-     * This includes the minimum parameters needed for the {@link com.revature.models.AbstractReimbursement} class.
-     * If other fields are needed, please create additional constructors.
-     */
-    public Reimbursement(int id, Status status, User author, User resolver, double amount) {
-        super(id, status, author, resolver, amount);
+    public Reimbursement(int id, int status, int author, double amount, String description) {
+        super(id, status, author, amount);
+        this.description = description;
+    }
+
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

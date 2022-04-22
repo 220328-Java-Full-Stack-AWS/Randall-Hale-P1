@@ -45,6 +45,16 @@ public class Driver {
                 AuthService.register(username,password,email);
             }
         }
-        System.out.println("Wow. you really made it out of there chap. Outstanding");
+
+        System.out.println("Welcome" + currUser.getUsername() + ". Do you want to view an existing request (enter 1) or create a new request (enter 2)?");
+        int response = Integer.parseInt(scan.nextLine());
+
+        if(response == 1){
+
+        }
+        else if(response == 2){
+
+        }
+
         }
     }
