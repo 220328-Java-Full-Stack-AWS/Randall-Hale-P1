@@ -1,60 +1,38 @@
 package com.revature;
 
-import com.revature.models.User;
+import com.revature.db.ReimbursementDao;
+import com.revature.db.UserDao;
+import com.revature.models.Reimbursement;
 import com.revature.services.AuthService;
+import com.revature.models.User;
 
-import java.util.Scanner;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 public class Driver {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 
-        Scanner scan = new Scanner(System.in);
+        // Reimbursement test = new Reimbursement();
+        // test.setDescription("yaya");
+        // test.setAmount(10);
 
-        Boolean loggedIn = false;
-        User currUser = null;
+        // ReimbursementDao.create(test);
 
-        while(!loggedIn){
+        // Timestamp ts = new Timestamp(System.currentTimeMillis());
 
-            System.out.println("Welcome. Do you want to login (enter 1) or register (enter 2)?");
-            int response = Integer.parseInt(scan.nextLine());
-            if(response == 1){
+        // Reimbursement newd = new Reimbursement(0,0,12d,1,2, 1,"yep", ts, ts);
+        // for(int i = 0; i < 4; i++){
+        //    ReimbursementDao.create(newd);
+        // }
 
-                System.out.println("What is your username?");
-                String username = scan.nextLine();
-                System.out.println("Enter your password.");
-                String password = scan.nextLine();
+        List<Reimbursement> fuck = ReimbursementDao.getAll(0);
+        System.out.println(fuck.size());
 
-                currUser = AuthService.login(username,password);
 
-                if(currUser != null) {
-                    loggedIn = true;
-                    System.out.println("Congrats. You've made it.");
-                    continue;
-                }
-
-            }
-            else if(response == 2) {
-                System.out.println("Provide username");
-                String username = scan.nextLine();
-                System.out.println("Provide password");
-                String password = scan.nextLine();
-                System.out.println("What's your email?");
-                String email = scan.nextLine();
-
-                AuthService.register(username,password,email);
-            }
-        }
-
-        System.out.println("Welcome" + currUser.getUsername() + ". Do you want to view an existing request (enter 1) or create a new request (enter 2)?");
-        int response = Integer.parseInt(scan.nextLine());
-
-        if(response == 1){
-
-        }
-        else if(response == 2){
-
-        }
-
-        }
     }
+
+
+
+}

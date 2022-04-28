@@ -31,6 +31,7 @@ public class ConnectionManager {
             InputStream input = loader.getResourceAsStream("application.properties");
             props.load(input);
 
+            Class.forName("org.postgresql.Driver");
 
             String connectionString = "jdbc:postgresql://" +
                     props.getProperty("hostname") + ":" +
@@ -41,7 +42,9 @@ public class ConnectionManager {
             String password = props.getProperty("password");
 
             connection = DriverManager.getConnection(connectionString, username, password);
-        } catch (IOException | SQLException e) {e.printStackTrace();}
+        } catch (IOException | SQLException e) {e.printStackTrace();} catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         return connection;
     }

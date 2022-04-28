@@ -22,9 +22,9 @@ public class AuthService {
 
     }
 
-    public static void register(String username, String password, String email){
+    public static void register(String username, String password, String first, String last, String email){
 
-        User newUser = new User(username, password, email);
+        User newUser = new User(0, 0, username, password, first, last, email);
 
         UserDao.create(newUser);
 
