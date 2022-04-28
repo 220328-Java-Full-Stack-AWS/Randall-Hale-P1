@@ -25,7 +25,7 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int user_id = Integer.parseInt(req.getParameter("user_id"));
+        int user_id = Integer.parseInt(req.getHeader("authToken"));
 
         List<Reimbursement> pulled = ReimbursementDao.getAllByUser(user_id);
 
@@ -44,7 +44,7 @@ public class UserServlet extends HttpServlet {
 
         Timestamp submitted = new Timestamp(System.currentTimeMillis());
 
-        int author = Integer.parseInt(req.getParameter("user_id"));
+        int author = Integer.parseInt(req.getHeader("authToken"));
 
         newReimbursement.setSubmitted(submitted);
         newReimbursement.setAuthor(author);

@@ -46,7 +46,10 @@ public class AdminServlet extends HttpServlet {
         model.setStatus(Integer.parseInt(req.getHeader("reimb_status")));
 
         Timestamp resolved = new Timestamp(System.currentTimeMillis());
+        int resolver = req.getIntHeader("authToken");
+
         model.setResolved(resolved);
+        model.setResolver(resolver);
 
         ReimbursementDao.update(model);
         resp.setStatus(200);
